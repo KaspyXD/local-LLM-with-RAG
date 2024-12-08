@@ -48,7 +48,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "-m",
         "--model",
-        default="mistral",
+        default="llama3.2-vision",
         help="The name of the LLM model to use.",
     )
     parser.add_argument(
@@ -60,7 +60,7 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "-p",
         "--path",
-        default="Research",
+        default="C:\\Users\\Stefan\\Documents\\Coding\\Project\\Carb-Wizard\\DATA Library\\LegislationMD",
         help="The path to the directory containing documents to load.",
     )
     return parser.parse_args()

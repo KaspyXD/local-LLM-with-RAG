@@ -32,14 +32,17 @@ def __is_model_available_locally(model_name: str) -> bool:
         return False
 
 
-def get_list_of_models() -> list[str]:
-    """
-    Retrieves a list of available models from the Ollama repository.
+import ollama
 
-    Returns:
-        list[str]: A list of model names available in the Ollama repository.
-    """
-    return [model["name"] for model in ollama.list()["models"]]
+def get_list_of_models():
+    try:
+        # Fetch the list of models
+        models = ollama.list().get("models", [])
+        # Safely extract model names
+        return [model.get("name", "Unnamed Model") for model in models]
+    except Exception as e:
+        print(f"Error fetching model list: {e}")
+        return ["Default Model"]  # Fallback
 
 
 def check_if_model_is_available(model_name: str) -> None:
